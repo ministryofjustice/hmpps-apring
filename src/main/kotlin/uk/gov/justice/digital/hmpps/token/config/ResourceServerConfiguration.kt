@@ -17,7 +17,7 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtGra
 
 @Configuration
 @EnableWebSecurity
-class ResourceServerConfiguration : WebSecurityConfigurerAdapter() {
+open class ResourceServerConfiguration : WebSecurityConfigurerAdapter() {
   public override fun configure(http: HttpSecurity) {
     http.sessionManagement()
       .sessionCreationPolicy(STATELESS) // Can't have CSRF protection as requires session
@@ -35,9 +35,9 @@ class ResourceServerConfiguration : WebSecurityConfigurerAdapter() {
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
-class MethodSecurityConfiguration : GlobalMethodSecurityConfiguration()
+open class MethodSecurityConfiguration : GlobalMethodSecurityConfiguration()
 
-class AuthAwareTokenConverter : Converter<Jwt, AbstractAuthenticationToken> {
+open class AuthAwareTokenConverter : Converter<Jwt, AbstractAuthenticationToken> {
   private val jwtGrantedAuthoritiesConverter: Converter<Jwt, Collection<GrantedAuthority>> =
     JwtGrantedAuthoritiesConverter()
 

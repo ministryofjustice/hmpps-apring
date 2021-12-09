@@ -13,10 +13,10 @@ import org.springframework.web.server.ResponseStatusException
 @RestController
 @Validated
 @RequestMapping("/token", produces = [MediaType.APPLICATION_JSON_VALUE])
-class TokenResource() {
+open class TokenResource() {
 
   @PostMapping("verify")
-  fun verifyToken(
+  open fun verifyToken(
     @RequestHeader(HttpHeaders.AUTHORIZATION) bearerToken: String,
   ): String =
     throw ResponseStatusException(HttpStatus.BAD_REQUEST, """{request: "its a bad request}""")
